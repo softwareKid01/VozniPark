@@ -1,0 +1,33 @@
+﻿@model List<string>
+
+@if (Model != null && Model.Any())
+{
+    <div class="nav-item dropdown ms-3">
+        <a class="nav-link dropdown-toggle text-dark position-relative" href="#" id="notifDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            🔔 <span class="fw-bold">Upozorenja</span>
+            <!-- Crveni bedž sa brojem notifikacija -->
+            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger border border-light mt-2">
+                @Model.Count
+                <span class="visually-hidden">nepročitanih upozorenja</span>
+            </span>
+        </a>
+        <ul class="dropdown-menu dropdown-menu-end shadow-lg border-danger p-2" aria-labelledby="notifDropdown" style="width: 350px; max-height: 400px; overflow-y: auto;">
+            <li><h6 class="dropdown-header text-danger fw-bold border-bottom mb-2">Kritična obavještenja (@Model.Count)</h6></li>
+
+            @foreach (var msg in Model)
+            {
+                <li class="mb-2">
+                    <div class="dropdown-item text-wrap bg-light border-start border-danger border-3 rounded">
+                        <small class="fw-bold text-dark">@msg</small>
+                    </div>
+                </li>
+            }
+        </ul>
+    </div>
+}
+else
+{
+    <div class="nav-item ms-3 pt-2">
+        <span class="text-success"><small>✅ Sve je u redu</small></span>
+    </div>
+}

@@ -1,0 +1,54 @@
+﻿@model VozniPark.ViewModels.RegisterViewModel
+@{
+    ViewData["Title"] = "Registracija";
+}
+
+<div class="container mt-5 w-50">
+    <div class="card shadow-sm border-0 p-5">
+        <h2 class="text-primary fw-bold text-center mb-4">Kreirajte nalog</h2>
+
+        <form asp-action="Register" method="post">
+            @if (!ViewData.ModelState.IsValid)
+            {
+                <div asp-validation-summary="All" class="alert alert-danger p-3 border-0 rounded-3 shadow-sm"></div>
+            }
+
+            <div class="mb-3">
+                <label asp-for="Ime" class="form-label fw-bold"></label>
+                <input asp-for="Ime" class="form-control" />
+                <span asp-validation-for="Ime" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Prezime" class="form-label fw-bold"></label>
+                <input asp-for="Prezime" class="form-control" />
+                <span asp-validation-for="Prezime" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label fw-bold"></label>
+                <input asp-for="Email" class="form-control" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Password" class="form-label fw-bold">Lozinka</label>
+                <input asp-for="Password" class="form-control" />
+                <span asp-validation-for="Password" class="text-danger"></span>
+            </div>
+
+            <div class="mb-4">
+                <label asp-for="ConfirmPassword" class="form-label fw-bold"></label>
+                <input asp-for="ConfirmPassword" class="form-control" />
+                <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+            </div>
+
+            <button type="submit" class="btn btn-primary w-100 fw-bold">Registruj se</button>
+        </form>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

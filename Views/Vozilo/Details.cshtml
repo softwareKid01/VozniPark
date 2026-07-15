@@ -1,0 +1,99 @@
+﻿@model VozniPark.Models.Vozilo
+
+@{
+    ViewData["Title"] = "Detalji vozila";
+}
+
+<div class="container-fluid mt-4">
+    <!-- Nazad dugme -->
+    <div class="mb-4">
+        <a asp-controller="Vozilo" asp-action="Index" class="btn btn-outline-secondary shadow-sm">
+            &larr; Nazad na sva vozila
+        </a>
+    </div>
+
+    <!-- Informacije o vozilu (Header kartica) -->
+    <div class="card shadow-sm border-0 mb-5">
+        <div class="card-header bg-primary text-white p-3">
+            <h4 class="mb-0">Detalji vozila: <span class="fw-bold">@Model.RegistracijskaOznaka</span></h4>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-md-3">
+                    <p class="text-muted mb-1 small text-uppercase">Marka i Model</p>
+                    <h5 class="fw-bold">@Model.Marka @Model.Model</h5>
+                </div>
+                <div class="col-md-3">
+                    <p class="text-muted mb-1 small text-uppercase">Godina proizvodnje</p>
+                    <h5>@Model.GodinaProizvodnje</h5>
+                </div>
+                <div class="col-md-3">
+                    <p class="text-muted mb-1 small text-uppercase">Datum registracije</p>
+                    <h5>@Model.DatumRegistracije.ToString("dd.MM.yyyy")</h5>
+                </div>
+                <div class="col-md-3">
+                    <p class="text-muted mb-1 small text-uppercase">Napomena</p>
+                    <h5>@Model.Napomena</h5>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Servisna istorija -->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h3 class="text-primary fw-bold">Servisna istorija</h3>
+        @if (User.IsInRole("USER"))
+        {
+            <a asp-controller="Servis" asp-action="Create" asp-route-voziloId="@Model.Id" class="btn btn-success shadow-sm">
+                <b>+</b> Dodaj novi servis
+            </a>
+        }
+    </div>
+
+    <div class="table-responsive shadow-sm rounded">
+        <table class="table table-hover table-striped align-middle mb-0">
+            <thead class="table-dark">
+                <tr>
+                    <th>Datum</th>
+                    <th>Tip servisa</th>
+                    <th>Opis radova</th>
+                    <th>Servisna kuća</th>
+                    <th>Cijena</th>
+                    <th>Napomena</th>
+                    <th class="text-center">Akcije</th>
+                </tr>
+            </thead>
+            <tbody class="bg-white">
+                @if (Model.Servisi != null && Model.Servisi.Any())
+                {
+                    @foreach (var item in Model.Servisi)
+                    {
+                        <tr>
+                            <td class="fw-bold">@item.DatumServisa.ToString("dd.MM.yyyy")</td>
+                            <td>@item.TipServisa</td>
+                            <td>@item.OpisRadova</td>
+                            <td>@item.ServisnaKuca</td>
+                            <td class="text-success fw-bold">@item.Cijena?.ToString("N2") KM</td>
+                            <td class="text-muted">@item.Napomena</td>
+                            <td class="text-center">
+                                <div class="d-flex gap-2 justify-content-center">
+                                    @if (User.IsInRole("USER"))
+                                    {
+                                        <a asp-controller="Servis" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-warning btn-sm shadow-sm text-dark fw-bold">Uredi</a>
+                                        <a asp-controller="Servis" asp-action="Delete" asp-route-id="@item.Id" class="btn btn-danger btn-sm shadow-sm">Obriši</a>
+                                    }
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                }
+                else
+                {
+                    <tr>
+                        <td colspan="7" class="text-center py-4 text-muted">Nema evidentiranih servisa za ovo vozilo.</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

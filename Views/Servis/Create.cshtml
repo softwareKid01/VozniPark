@@ -1,0 +1,72 @@
+@model VozniPark.Models.Servis
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Servis</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            <div class="form-group">
+                <label asp-for="VoziloId" class="control-label"></label>
+                <input asp-for="VoziloId" class="form-control" />
+                <span asp-validation-for="VoziloId" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="DatumServisa" class="control-label"></label>
+                <input asp-for="DatumServisa" class="form-control" />
+                <span asp-validation-for="DatumServisa" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="TipServisa" class="control-label"></label>
+                <input asp-for="TipServisa" class="form-control" />
+                <span asp-validation-for="TipServisa" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="OpisRadova" class="control-label"></label>
+                <input asp-for="OpisRadova" class="form-control" />
+                <span asp-validation-for="OpisRadova" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="ServisnaKuca" class="control-label"></label>
+                <input asp-for="ServisnaKuca" class="form-control" />
+                <span asp-validation-for="ServisnaKuca" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Cijena" class="control-label"></label>
+                <input asp-for="Cijena" class="form-control" />
+                <span asp-validation-for="Cijena" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Napomena" class="control-label"></label>
+                <input asp-for="Napomena" class="form-control" />
+                <span asp-validation-for="Napomena" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Vozilo" class="control-label"></label>
+                <input asp-for="Vozilo" class="form-control" />
+                <span asp-validation-for="Vozilo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>

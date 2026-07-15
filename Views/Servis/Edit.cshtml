@@ -1,0 +1,46 @@
+﻿@model VozniPark.Models.Servis
+
+<h2>Uredi servis</h2>
+
+<form asp-action="Edit" method="post">
+    <!-- DODAJ OVU LINIJU OVDJE: Ona će ispisati crvenim slovima tačan razlog zašto ne spašava -->
+    <div asp-validation-summary="All" class="text-danger fw-bold mb-3"></div>
+    <!-- OBAVEZNA SKRIVENA POLJA -->
+    <!-- Zadržavamo ID servisa i ID vozila da ih ne bismo izgubili prilikom snimanja -->
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="VoziloId" />
+
+    <div class="form-group mb-3">
+        <label asp-for="DatumServisa" class="control-label"></label>
+        <input asp-for="DatumServisa" class="form-control" type="date" />
+        <span asp-validation-for="DatumServisa" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="TipServisa" class="control-label"></label>
+        <input asp-for="TipServisa" class="form-control" />
+        <span asp-validation-for="TipServisa" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="ServisnaKuca" class="control-label"></label>
+        <input asp-for="ServisnaKuca" class="form-control" />
+        <span asp-validation-for="ServisnaKuca" class="text-danger"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="Cijena" class="control-label"></label>
+        <input asp-for="Cijena" class="form-control" type="number" step="0.01" />
+        <span asp-validation-for="Cijena" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-success">Sačuvaj izmjene</button>
+        <a asp-action="IndexByVozilo" asp-route-voziloId="@Model.VoziloId" class="btn btn-secondary">Odustani</a>
+    </div>
+    <div class="form-group mb-3">
+        <label asp-for="OpisRadova" class="control-label"></label>
+        <textarea asp-for="OpisRadova" class="form-control" rows="3"></textarea>
+        <span asp-validation-for="OpisRadova" class="text-danger"></span>
+    </div>
+</form>

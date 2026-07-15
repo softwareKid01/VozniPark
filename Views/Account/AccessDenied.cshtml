@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Pristup odbijen";
+}
+
+<div class="container mt-5 text-center w-50">
+    <div class="card shadow-sm border-danger p-5">
+       
+        <h1 class="display-1 text-danger mb-3">🔒</h1>
+
+        <h2 class="text-danger fw-bold">Pristup odbijen!</h2>
+        <hr class="w-50 mx-auto" />
+
+        <h5 class="mt-4 text-dark">
+            Žao nam je, ali nemate prava da posjetite ovu stranicu.
+        </h5>
+
+        <p class="text-muted mt-2 fs-5">
+            Potrebna vam je rola <span class="badge bg-danger">ADMIN</span> da biste nastavili dalje.
+        </p>
+
+        <div class="mt-4">
+            <a asp-controller="Vozilo" asp-action="Index" class="btn btn-outline-secondary fw-bold px-4">
+                Vrati se nazad
+            </a>
+        </div>
+    </div>
+</div>

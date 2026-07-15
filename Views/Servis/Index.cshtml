@@ -1,0 +1,54 @@
+﻿@model IEnumerable<VozniPark.Models.Servis>
+
+@{
+    ViewData["Title"] = "Servisi za vozilo";
+}
+
+<h1>Servisi</h1>
+
+<p>
+    <a asp-action="Create" asp-route-voziloId="@ViewBag.VoziloId" class="btn btn-primary">Dodaj novi servis</a>
+    <a asp-controller="Vozilo" asp-action="Index" class="btn btn-secondary">Nazad na sva vozila</a>
+</p>
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th>Datum servisa</th>
+            <th>Tip servisa</th>
+            <th>Opis radova</th>
+            <th>Servisna kuća</th>
+            <th>Cijena</th>
+            <th>Napomena</th>
+            <th>Akcije</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.DatumServisa.ToString("dd.MM.yyyy")</td>
+                <td>@item.TipServisa</td>
+                <td>@item.OpisRadova</td>
+                <td>@item.ServisnaKuca</td>
+                <td>@item.Cijena.Value.ToString("N2") KM</td>
+                <td>@item.Napomena</td>
+                <td>
+                    @if (User.IsInRole("USER"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> <span>|</span>
+                    }
+                    <a asp-action="Details" asp-route-id="@item.Id">Details</a>
+                    @if (User.IsInRole("USER"))
+                    {
+                        <span>|</span> <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    }
+                </td>
+               <td>
+                <a asp-controller="Servis" asp-action="Edit" asp-route-id="@item.Id" class="btn btn-primary btn-sm">Edit</a>
+                </td>
+                            
+            </tr>
+        }
+    </tbody>
+</table>
