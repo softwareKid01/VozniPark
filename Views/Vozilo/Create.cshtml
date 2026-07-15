@@ -44,9 +44,9 @@
                                 <select asp-for="GodinaProizvodnje" class="form-select">
                                     @{
                                         int startYear = 1990;
-                                        int endYear = DateTime.Now.Year; // Automatski uzima 2026, iduće godine 2027 itd.
+                                        int endYear = DateTime.Now.Year; 
 
-                                        // Ispisujemo godine od najnovije ka najstarijoj
+                                        
                                         for (int i = endYear; i >= startYear; i--)
                                         {
                                             <option value="@i">@i</option>

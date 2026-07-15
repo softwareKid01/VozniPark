@@ -5,7 +5,7 @@
 }
 
 <div class="container-fluid mt-4">
-    <!-- Zaglavlje -->
+    
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2 class="text-primary fw-bold">Upravljanje korisnicima</h2>
         <a asp-action="Create" class="btn btn-success shadow-sm">
@@ -13,7 +13,7 @@
         </a>
     </div>
 
-    <!-- Prikaz u karticama (5 kartica u redu na velikim ekranima) -->
+    
     <div class="row row-cols-1 row-cols-md-3 row-cols-lg-5 g-4 mb-4">
         @if (Model != null && Model.Any())
         {
@@ -21,16 +21,16 @@
             {
                 <div class="col">
                     <div class="card h-100 shadow-sm border-0 text-center transition-hover">
-                        <!-- Slika korisnika (Pravatar API) -->
+                        
                         <div class="card-header bg-transparent border-0 pt-4 pb-0">
-                            <!-- Pravatar koristi ID korisnika da bi slika uvijek bila ista za tog korisnika -->
+                           
                             <img src="https://i.pravatar.cc/150?u=@user.Id" class="rounded-circle shadow" alt="Slika korisnika" width="90" height="90" style="object-fit: cover;">
                         </div>
 
                         <div class="card-body">
-                            <!-- Prikaz imena ili emaila u zavisnosti šta imaš u modelu -->
+                           
                             <h5 class="card-title fw-bold text-dark mb-1 text-truncate">
-                                <!-- Ako imaš Ime i Prezime u modelu, ostavi ovako, inače stavi @user.UserName -->
+                                @user.UserName -->
                                 @user.UserName
                             </h5>
                             <p class="card-text text-muted small mb-3 text-truncate" title="@user.Email">
@@ -60,7 +60,7 @@
         }
     </div>
 
-    <!-- Paginacija (prikazuje se samo ako ima više od 1 stranice) -->
+    
     @if (ViewBag.TotalPages > 1)
     {
         <nav aria-label="Navigacija po stranicama" class="mt-4">

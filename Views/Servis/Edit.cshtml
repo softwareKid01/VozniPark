@@ -3,10 +3,10 @@
 <h2>Uredi servis</h2>
 
 <form asp-action="Edit" method="post">
-    <!-- DODAJ OVU LINIJU OVDJE: Ona će ispisati crvenim slovima tačan razlog zašto ne spašava -->
+    
     <div asp-validation-summary="All" class="text-danger fw-bold mb-3"></div>
-    <!-- OBAVEZNA SKRIVENA POLJA -->
-    <!-- Zadržavamo ID servisa i ID vozila da ih ne bismo izgubili prilikom snimanja -->
+    
+   
     <input type="hidden" asp-for="Id" />
     <input type="hidden" asp-for="VoziloId" />
 
