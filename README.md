@@ -47,10 +47,10 @@ Aplikacija i baza podataka su u potpunosti kontejnerizovane. Da biste pokrenuli 
 ### Koraci za pokretanje
 
 1. Klonirajte repozitorij na vašu lokalnu mašinu:
-   ```bash
-   git clone https://github.com/TarikDedic/VozniPark.git
+   
+   git clone https://github.com/softwareKid01/VozniPark.git
    cd VozniPark
-   ```
+   
 
 2. Pokrenite aplikaciju i bazu podataka koristeći Docker Compose komandu:
    ```bash
